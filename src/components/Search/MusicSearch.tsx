@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MusicCard from '../MusicCard/MusicCard';
 import { searchMusic } from '../../services/deezerService';
 import './musicSearch.css';
 
 export default function MusicSearch() {
 	const [query, setQuery] = useState('');
+	const [page, setPage] = useState<number>(0)
+	const limit = 30
+
 	const [musics, setMusics] = useState<
 		Array<{
 			id: number;
@@ -18,6 +21,19 @@ export default function MusicSearch() {
 	const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
 		null
 	);
+	
+	useEffect(() => {
+		async function fetchMusic () {
+			if(query){
+				const results = await searchMusic(query, page, limit);
+				setMusics(results);
+				console.log(results);
+				console.log(page);
+				
+			}
+		}
+	}, [query, page])
+
 
 	async function handleSearch() {
 		const results = await searchMusic(query);

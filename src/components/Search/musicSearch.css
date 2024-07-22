@@ -14,3 +14,18 @@
 .music-search__input:focus{
     outline: none;
 }
+.music-search__btn{
+    width: 4vw;
+    min-width: 50px;
+    border: none;
+    transition: all ease-in-out .2s;
+}
+.music-search__btn:hover{
+    cursor: pointer;
+    background-color: #016359;
+}
+
+.music-search__list{
+ display: flex;
+ flex-wrap: wrap;
+}
