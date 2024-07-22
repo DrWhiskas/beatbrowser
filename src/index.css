@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*,*::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BACKGROUND */
+.bgBlue{
+  background-color: #0E1B23;
+}
+.bgLightBlue{
+  background-color: #14252F;
+}
+.bgDarkBlue{
+  background-color: #010F17;
+}
+.bgGreen{
+  background-color: #009688;
+}
+/* TEXT */
+.tWhite{
+  color: whitesmoke;
+}
+.tDarkWhite{
+  color: rgb(201, 201, 201);
+}

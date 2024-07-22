@@ -1,0 +1,16 @@
+.music-search__header{
+    position: relative;
+    width: 100%;
+    display: flex;
+
+}
+
+.music-search__input {
+	width: 60vw;
+	background: unset;
+	border: .3rem solid #010F17;
+	padding: 1rem;
+}
+.music-search__input:focus{
+    outline: none;
+}
