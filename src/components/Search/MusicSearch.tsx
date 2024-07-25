@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MusicCard from '../MusicCard/MusicCard';
 import { searchMusic } from '../../services/deezerService';
 import './musicSearch.css';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function MusicSearch() {
 	const [query, setQuery] = useState('');
@@ -97,10 +98,14 @@ export default function MusicSearch() {
 				))}
 			</div>
 			{query ? (
-				<>
-					<button onClick={handlePagePrev}>Prev</button>
-					<button onClick={handlePageNext}>Next</button>
-				</>
+				<div className='btn__container'>
+					<button className="btn__search" onClick={handlePagePrev}>
+						<ChevronLeft />
+					</button>
+					<button className="btn__search" onClick={handlePageNext}>
+						<ChevronRight />
+					</button>
+				</div>
 			) : (
 				<></>
 			)}

@@ -1,31 +1,52 @@
-.music-search__header{
-    position: relative;
-    width: 100%;
-    display: flex;
-
+.music-search__header {
+	position: relative;
+	width: 100%;
+	display: flex;
 }
 
 .music-search__input {
 	width: 60vw;
 	background: unset;
-	border: .3rem solid #010F17;
+	border: 0.3rem solid #010f17;
 	padding: 1rem;
 }
-.music-search__input:focus{
-    outline: none;
+.music-search__input:focus {
+	outline: none;
 }
-.music-search__btn{
-    width: 4vw;
-    min-width: 50px;
-    border: none;
-    transition: all ease-in-out .2s;
+.music-search__btn {
+	width: 4vw;
+	min-width: 50px;
+	border: none;
+	transition: all ease-in-out 0.2s;
 }
-.music-search__btn:hover{
-    cursor: pointer;
-    background-color: #016359;
+.music-search__btn:hover {
+	cursor: pointer;
+	background-color: #016359;
+    color: white;
+    font-weight: bold;
 }
 
-.music-search__list{
- display: flex;
- flex-wrap: wrap;
+.music-search__list {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.btn__search{
+    transition: all ease-in-out .2s;
+    border: none;
+    display: inline;
+}
+.btn__search:hover{
+    cursor: pointer;
+    background-color: #016359;
+    color: white;
+    font-weight: bold;
+}
+.btn__container{
+    display: flex;
+    gap: .2rem;
+    padding: 1rem;
 }

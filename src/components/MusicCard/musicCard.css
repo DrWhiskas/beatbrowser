@@ -4,7 +4,6 @@
 	width: 150px;
 	height: 220px;
 	position: relative;
-	padding: 0.8rem;
 }
 .music-card__cover {
 	width: 100%;
@@ -36,6 +35,8 @@
 }
 .music-card:hover .music-card__play {
 	display: block;
+	width: 100%;
+	height: 68%;
 }
 .icon{
     color: white;

@@ -6,7 +6,7 @@ import MusicSearch from "../../components/Search/MusicSearch";
 
 export default function Home(){
     return (
-			<section className="home bgBlue ">
+			<section className="home">
                 <Header />
 				<MusicSearch />
 			</section>

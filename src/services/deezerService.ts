@@ -7,7 +7,7 @@ const API_HOST = 'deezerdevs-deezer.p.rapidapi.com';
 export const searchMusic = async (
     query: string,
     page: number = 1,
-    limit: number = 30
+    limit: number = 30,
 ) => {
     try {
         const index = (page - 1) * limit
