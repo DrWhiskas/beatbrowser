@@ -5,8 +5,11 @@ import './musicSearch.css';
 
 export default function MusicSearch() {
 	const [query, setQuery] = useState('');
-	const [page, setPage] = useState<number>(0)
-	const limit = 30
+	const [page, setPage] = useState<number>(1);
+	const limit = 30;
+	const [pageButton, setPageButton] = useState(false)
+	const prevPage = 0;
+	const nextPage = 0;
 
 	const [musics, setMusics] = useState<
 		Array<{
@@ -21,24 +24,42 @@ export default function MusicSearch() {
 	const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
 		null
 	);
-	
+
 	useEffect(() => {
-		async function fetchMusic () {
-			if(query){
+		async function fetchMusic() {
+			if (query) {
+				setPageButton(true)
 				const results = await searchMusic(query, page, limit);
 				setMusics(results);
-				console.log(results);
-				console.log(page);
-				
+			}else{
+				setPageButton(false);
 			}
 		}
-	}, [query, page])
-
+		fetchMusic();
+	}, [query, page]);
 
 	async function handleSearch() {
-		const results = await searchMusic(query);
-		setMusics(results);
-		console.log(results);
+		if (query !== '') {
+			const results = await searchMusic(query);
+			setMusics(results);
+		} else {
+			alert('Enter a music');
+			return 0;
+		}
+	}
+	function handlePageNext() {
+		if (page !== 1) {
+			setPage((prevPage) => prevPage + 1);
+		} else {
+			setPage((page) => page + 1);
+		}
+	}
+	function handlePagePrev() {
+		if (page > 1) {
+			setPage((nextPage) => nextPage - 1);
+		} else {
+			return 0;
+		}
 	}
 
 	function handlePlay(audio: HTMLAudioElement) {
@@ -75,6 +96,14 @@ export default function MusicSearch() {
 					</li>
 				))}
 			</div>
+			{query ? (
+				<>
+					<button onClick={handlePagePrev}>Prev</button>
+					<button onClick={handlePageNext}>Next</button>
+				</>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }
