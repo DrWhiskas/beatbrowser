@@ -1,5 +1,7 @@
 .header{
-    width: 10vw;
-    min-width: 100px;
+    min-width: 200px;
     height: 100vh;
+}
+.header__logo{
+    width: 150px;
 }

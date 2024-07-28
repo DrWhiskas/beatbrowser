@@ -3,7 +3,7 @@ import MusicCard from '../MusicCard/MusicCard';
 import { searchMusic } from '../../services/deezerService';
 import './musicSearch.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-
+import GenreMusic from '../Genre/Genre';
 export default function MusicSearch() {
 	const [query, setQuery] = useState('');
 	const [page, setPage] = useState<number>(1);
@@ -31,6 +31,8 @@ export default function MusicSearch() {
 			if (query) {
 				setPageButton(true)
 				const results = await searchMusic(query, page, limit);
+				console.log(results);
+				
 				setMusics(results);
 			}else{
 				setPageButton(false);
@@ -109,6 +111,8 @@ export default function MusicSearch() {
 			) : (
 				<></>
 			)}
+
+			<GenreMusic />
 		</div>
 	);
 }
