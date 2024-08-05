@@ -6,6 +6,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './components/Login/Login';
 import Signin from './components/Signin/Signin';
+import Playlist from './pages/Playlist/Playlist';
 import Error from './pages/Error/Error';
 
 
@@ -26,6 +27,7 @@ root.render(
 					<Route path="/home" element={<Home />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/signin" element={<Signin />} />
+					<Route path="/playlist" element={<Playlist />} />
 					<Route path="/*" element={<Error />} />
 				</Routes>
 			</HashRouter>

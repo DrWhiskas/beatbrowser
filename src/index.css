@@ -56,3 +56,6 @@ li{
   cursor: pointer;
   font-weight: bold;
 }
+a{
+  text-decoration: none;
+}

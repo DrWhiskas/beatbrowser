@@ -5,7 +5,7 @@ import './musicSearch.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import GenreMusic from '../Genre/Genre';
 export default function MusicSearch() {
-	const [query, setQuery] = useState('');
+	const [query, setQuery] = useState('Stray Kids');
 	const [page, setPage] = useState<number>(1);
 	const limit = 30;
 	const [pageButton, setPageButton] = useState(false)
