@@ -6,7 +6,7 @@ import { API_HOST } from "../../services/deezerService";
 export default function GenreMusic(){
     const [genreId, setGenreId] = useState('')
 
-    const API_GENRE = `https://deezerdevs-deezer.p.rapidapi.com/genre/${genreId}`;
+    const API_GENRE = `https://deezerdevs-deezer.p.rapidapi.com/genre/rap`;
 
 		 const Genre = async (query: string) => {
 			try {

@@ -22,6 +22,8 @@ export const searchMusic = async (
                 'x-rapidapi-host': API_HOST
             }
         });
+        console.log(response);
+        
         return response.data.data;
     } catch (error) {
         console.error(error);

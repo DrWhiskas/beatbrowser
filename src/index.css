@@ -42,3 +42,17 @@ code {
 li{
   list-style: none;
 }
+
+.btn{
+  padding: 1rem;
+  background-color: #0E1B23;
+  color: white;
+  font-size: large;
+  transition: all ease-in-out .2s;
+}
+.btn:hover{
+  background-color: white;
+  color: #0E1B23;
+  cursor: pointer;
+  font-weight: bold;
+}
