@@ -20,7 +20,12 @@
     color: white;
     transition: all ease-in-out .2s;
 }
-.header__content__link:hover{
+.header__content__link:hover,
+.header__log:hover{
     color: #7FA0B8;
     font-weight: bold;
+}
+.header__log{
+    margin-top: 5rem;
+    color: white;
 }

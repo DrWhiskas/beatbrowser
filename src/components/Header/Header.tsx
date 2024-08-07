@@ -24,9 +24,10 @@ export default function Header(){
 							<House /> Home
 						</Link>
 					</div>
+					<Link to="/login" className="header__log">
+						Login
+					</Link>
 				</div>
-
-				<Link to="/login" className="header__log">Login</Link>
 			</header>
 		);
 }
