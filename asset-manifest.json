@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/beatbrowser/static/css/main.deba9e41.css",
+    "main.js": "/beatbrowser/static/js/main.763449e8.js",
+    "static/js/453.22393ddc.chunk.js": "/beatbrowser/static/js/453.22393ddc.chunk.js",
+    "static/media/BB.png": "/beatbrowser/static/media/BB.d1b6afcba7ad72c7b267.png",
+    "index.html": "/beatbrowser/index.html",
+    "main.deba9e41.css.map": "/beatbrowser/static/css/main.deba9e41.css.map",
+    "main.763449e8.js.map": "/beatbrowser/static/js/main.763449e8.js.map",
+    "453.22393ddc.chunk.js.map": "/beatbrowser/static/js/453.22393ddc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.deba9e41.css",
+    "static/js/main.763449e8.js"
+  ]
+}
