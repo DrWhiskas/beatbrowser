@@ -26,7 +26,7 @@ export default function Header(){
 					</div>
 				</div>
 
-				<Link to="/login">Login</Link>
+				<Link to="/login" className="header__log">Login</Link>
 			</header>
 		);
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './signin.css';
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../features/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signin() {
 	const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function Signin() {
 	return (
 		<div className="login">
 			<div className="login__container">
-				<h2 className="login__container__title">Login</h2>
+				<h2 className="login__container__title">Sign in</h2>
 				<form className="login__container__form" onSubmit={handleSubmit}>
 					<div className="inputForm">
 						<span className="login__container__form__title">Email</span>
@@ -49,6 +49,10 @@ export default function Signin() {
 						Submit
 					</button>
 				</form>
+				<div className="login__footer">
+					<p className="login__text">Already have an account ?</p>
+					<Link to="/login">Log in</Link>
+				</div>
 			</div>
 		</div>
 	);

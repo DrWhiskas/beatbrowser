@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import './login.css'
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../features/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 
 export default function Login(){
     const dispatch = useDispatch()
@@ -21,11 +22,13 @@ export default function Login(){
         navigate('/home');
         
     }
-
     return (
 			<div className="login">
 				<div className="login__container">
-					<h2 className="login__container__title">Login</h2>
+					<div className="login__container__header">
+						<h2 className="login__container__title">Login</h2>
+						<X />
+					</div>
 					<form className="login__container__form" onSubmit={handleSubmit}>
 						<div className="inputForm">
 							<span className="login__container__form__title">Email</span>
@@ -50,8 +53,14 @@ export default function Login(){
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
-						<button className="btn" type="submit">Submit</button>
+						<button className="btn" type="submit">
+							Submit
+						</button>
 					</form>
+					<div className="login__footer">
+						<p className="login__text">Don't have an account ?</p>
+						<Link to="/signin">Sign in</Link>
+					</div>
 				</div>
 			</div>
 		);
