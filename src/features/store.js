@@ -1,29 +1,37 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-	user: {
-		id: null,
-		name: '',
-	},
-	token: null,
-	playlist: [],
-	usersDB: [
-		{
-			id: 1,
-			email: 'test@example.com',
-			password: 'password123',
-			name: 'John Doe',
-		},
-	],
+    user: {
+        id: null,
+        name: '',
+    },
+    token: null,
+    playlist: [],
+    usersDB: [
+        {
+            id: 1,
+            email: 'admin@admin.com',
+            password: 'admin123',
+            name: 'Admin Admin',
+        },
+    ],
 };
 
 const musicSlice = createSlice({
     name: 'music',
     initialState,
     reducers: {
-        createAccount:(state, action) => {
-            state.user.id = action.payload.id
-            state.user.name = action.payload.name
+        createAccount: (state, action) => {
+            const newUser = {
+                id: Date.now() + Math.random(),
+                email: action.payload.email,
+                password: action.payload.password,
+                name: action.payload.name,
+            };
+            state.usersDB.push(newUser);
+            state.user.id = newUser.id;
+            state.user.name = newUser.name;
+            state.token = 'testing-token';
         },
         loginUser: (state, action) => {
             const { email, password } = action.payload;
@@ -31,26 +39,27 @@ const musicSlice = createSlice({
             if (user) {
                 state.user.id = user.id;
                 state.user.name = user.name;
-                state.token = 'fake-jwt-token'; // Token fictif pour la simulation
+                state.token = 'fake-jwt-token';
             } else {
-                // Gérer le cas où l'authentification échoue
                 console.error('Invalid email or password');
             }
         },
-        setToken:(state, action ) =>  {
-            state.token = action.payload.token
-        }, 
+        setToken: (state, action) => {
+            state.token = action.payload.token;
+        },
         createPlaylist: (state, action) => {
-            state.playlist = action.payload.playlist
-        }
-    }
-})
+            state.playlist = action.payload.playlist;
+        },
+    },
+});
 
 export const { createAccount, setToken, createPlaylist, loginUser } = musicSlice.actions;
 
 export const store = configureStore({
-	reducer: { music: musicSlice.reducer},
-    devTools: true
+    reducer: { music: musicSlice.reducer },
+    devTools: true,
 });
 
-export default store
+export type RootState = ReturnType<typeof store.getState>;
+
+export default store;

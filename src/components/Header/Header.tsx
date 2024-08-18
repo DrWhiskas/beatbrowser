@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import './header.css'
 import { Link } from "react-router-dom";
-import { House, ListVideo, ListPlus } from 'lucide-react';
+import { House, ListVideo, ListPlus, LogIn } from 'lucide-react';
 import Logo from '../../media/BB.png'
+import { useSelector } from "react-redux";
+
+
 export default function Header(){
+		
+	const user = useSelector((state) => state.music.user);
+		if (user !== '') {
+			console.log(user);
+		}
+	
     return (
 			<header className="header bgDarkBlue">
 				<div className="header__container">
@@ -20,13 +29,10 @@ export default function Header(){
 						<Link to="/playlist" className="header__content__link">
 							<ListPlus /> Create Playlist
 						</Link>
-						<Link to="" className="header__content__link">
-							<House /> Home
+						<Link to="/login" className="header__content__link">
+							<LogIn /> Login
 						</Link>
 					</div>
-					<Link to="/login" className="header__log">
-						Login
-					</Link>
 				</div>
 			</header>
 		);

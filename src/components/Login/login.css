@@ -8,7 +8,7 @@
 .login__container{
     background-color: white;
     min-width: 20vw;
-    height: 50vh;
+    height: auto;
     padding: 2rem;
     border-radius: 10px;
 }
