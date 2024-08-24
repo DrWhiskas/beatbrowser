@@ -1,6 +1,25 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const initialState = {
+interface User {
+    id: number | null;
+    name: string;
+}
+
+interface UserDB {
+    id: number;
+    email: string;
+    password: string;
+    name: string;
+}
+
+interface MusicState {
+    user: User;
+    token: string | null;
+    playlist: string[];
+    usersDB: UserDB[];
+}
+
+const initialState: MusicState = {
     user: {
         id: null,
         name: '',
@@ -22,7 +41,7 @@ const musicSlice = createSlice({
     initialState,
     reducers: {
         createAccount: (state, action) => {
-            const newUser = {
+            const newUser: UserDB = {
                 id: Date.now() + Math.random(),
                 email: action.payload.email,
                 password: action.payload.password,
