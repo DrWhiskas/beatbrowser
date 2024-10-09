@@ -56,7 +56,7 @@ export default function Header() {
 					</div>
 					<div className="header__content__cat">
 						<h2 className="header__content__cat__title">ACCOUNT</h2>
-						<Link to="/home" className="header__content__link">
+						<Link to="/signin" className="header__content__link">
 							<LogIn /> Sign in
 						</Link>
 					</div>
