@@ -8,13 +8,12 @@
 .login__container{
     background-color: white;
     min-width: 20vw;
-    height: 50vh;
+    height: auto;
     padding: 2rem;
     border-radius: 10px;
 }
 .login__container__title{
     font-size: 2rem;
-    margin-bottom: 2rem;
 }
 .login__container__form{
     display: flex;
@@ -30,4 +29,12 @@
 }
 .login__container__form__input{
     padding: 1rem;
+}
+.login__footer{
+    display: flex;
+    gap: .5rem;
+}
+.login__container__header{
+    display: flex;
+    align-items: center;
 }
