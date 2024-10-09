@@ -3,15 +3,12 @@ import MusicCard from '../MusicCard/MusicCard';
 import { searchMusic } from '../../services/deezerService';
 import './musicSearch.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-import GenreMusic from '../Genre/Genre';
+
 export default function MusicSearch() {
 	const [query, setQuery] = useState('Stray Kids');
 	const [page, setPage] = useState<number>(1);
-	const limit = 30;
-	const [pageButton, setPageButton] = useState(false)
-	const prevPage = 0;
-	const nextPage = 0;
-
+	const limit = 27;
+	const [pageButton, setPageButton] = useState(false);
 	const [musics, setMusics] = useState<
 		Array<{
 			id: number;
@@ -21,20 +18,18 @@ export default function MusicSearch() {
 			preview: string;
 		}>
 	>([]);
-
 	const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
 		null
 	);
+	const [currentPlayingId, setCurrentPlayingId] = useState<number | null>(null); // ID de la musique en lecture
 
 	useEffect(() => {
 		async function fetchMusic() {
 			if (query) {
-				setPageButton(true)
+				setPageButton(true);
 				const results = await searchMusic(query, page, limit);
-				console.log(results);
-				
 				setMusics(results);
-			}else{
+			} else {
 				setPageButton(false);
 			}
 		}
@@ -43,35 +38,41 @@ export default function MusicSearch() {
 
 	async function handleSearch() {
 		if (query !== '') {
-			const results = await searchMusic(query);
+			const results = await searchMusic(query, page, limit);
 			setMusics(results);
 		} else {
 			alert('Enter a music');
-			return 0;
-		}
-	}
-	function handlePageNext() {
-		if (page !== 1) {
-			setPage((prevPage) => prevPage + 1);
-		} else {
-			setPage((page) => page + 1);
-		}
-	}
-	function handlePagePrev() {
-		if (page > 1) {
-			setPage((nextPage) => nextPage - 1);
-		} else {
-			return 0;
 		}
 	}
 
-	function handlePlay(audio: HTMLAudioElement) {
-		if (currentAudio && currentAudio !== audio) {
+	function handlePlay(musicId: number, previewUrl: string) {
+		const newAudio = new Audio(previewUrl);
+
+		if (currentAudio) {
 			currentAudio.pause();
 			currentAudio.currentTime = 0;
 		}
-		setCurrentAudio(audio);
+
+		if (currentPlayingId === musicId) {
+			setCurrentPlayingId(null);
+			setCurrentAudio(null);
+		} else {
+			newAudio.play();
+			setCurrentPlayingId(musicId);
+			setCurrentAudio(newAudio);
+		}
 	}
+
+	function handlePageNext() {
+		setPage((prevPage) => prevPage + 1);
+	}
+
+	function handlePagePrev() {
+		if (page > 1) {
+			setPage((nextPage) => nextPage - 1);
+		}
+	}
+
 	return (
 		<div className="music-search">
 			<div className="music-search__header bDarkBlue">
@@ -87,20 +88,21 @@ export default function MusicSearch() {
 				</button>
 			</div>
 			<div className="music-search__list">
-				{musics.map((music, key) => (
+				{musics.map((music) => (
 					<li className="music-search__list__item" key={music.id}>
 						<MusicCard
 							title={music.title}
 							cover={music.album.cover}
 							artist={music.artist.name}
 							preview={music.preview}
-							onPlay={handlePlay}
+							isPlaying={currentPlayingId === music.id}
+							onTogglePlay={() => handlePlay(music.id, music.preview)}
 						/>
 					</li>
 				))}
 			</div>
-			{query ? (
-				<div className='btn__container'>
+			{pageButton && (
+				<div className="btn__container">
 					<button className="btn__search" onClick={handlePagePrev}>
 						<ChevronLeft />
 					</button>
@@ -108,11 +110,7 @@ export default function MusicSearch() {
 						<ChevronRight />
 					</button>
 				</div>
-			) : (
-				<></>
 			)}
-
-			<GenreMusic />
 		</div>
 	);
 }

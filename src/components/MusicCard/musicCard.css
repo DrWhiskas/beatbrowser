@@ -29,7 +29,7 @@
 .music-card__play__btn {
     background: transparent;
     border-radius: 100%;
-    padding: .5rem;
+    padding: .8rem;
     border: none;
 	transition: all ease-in-out .2s;
 }
@@ -45,5 +45,5 @@
 .music-card__play__btn:hover{
 	cursor: pointer;
 
-	background-color: #7e11fc;
+	background-color: #005f6b;
 }

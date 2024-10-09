@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import './musicCard.css';
-import { Link } from 'react-router-dom';
-import { Play, CirclePlus, Pause } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
+
+// Define the props interface to type-check the component's props
 
 interface MusicCardProps {
 	title?: string;
@@ -10,24 +11,14 @@ interface MusicCardProps {
 	cover?: string;
 	preview?: string;
 	music?: string;
-	onPlay: (audio: HTMLAudioElement) => void;
+	isPlaying: boolean;
+	onTogglePlay: () => void;
 }
 
+// Functional component
 export default function MusicCard({ ...props }: MusicCardProps) {
+	// useRef hook to reference the audio element
 	const audioRef = useRef<HTMLAudioElement | null>(null);
-	const [isPlaying, setIsPlaying] = useState(false);
-
-	function togglePlay() {
-		const audio = audioRef.current;
-		if (audio) {
-			if (isPlaying) {
-				audio.pause();
-			} else {
-				audio.play();
-			}
-			setIsPlaying(!isPlaying);
-		}
-	}
 
 	return (
 		<article className="music-card">
@@ -36,11 +27,12 @@ export default function MusicCard({ ...props }: MusicCardProps) {
 			<span className="music-card__artist">{props.artist}</span>
 			<div className="music-card__play">
 				<audio ref={audioRef} src={props.preview} />
-				<button className="music-card__play__btn" onClick={togglePlay}>
-					{isPlaying ? <Pause className="icon" /> : <Play className="icon" />}
-				</button>
-				<button className="music-card__play__btn">
-					<CirclePlus className="icon" />
+				<button className="music-card__play__btn" onClick={props.onTogglePlay}>
+					{props.isPlaying ? (
+						<Pause className="icon" />
+					) : (
+						<Play className="icon" />
+					)}
 				</button>
 			</div>
 		</article>

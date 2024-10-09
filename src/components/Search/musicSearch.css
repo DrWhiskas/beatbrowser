@@ -1,7 +1,6 @@
 .music-search__header {
-	position: relative;
-	width: 100%;
 	display: flex;
+	margin: 1%;
 }
 
 .music-search__input {
@@ -32,6 +31,9 @@
 	width: 100%;
     padding: 1rem;
     gap: 1rem;
+}
+.music-search__list > *{
+ 	flex-basis: calc((100% / 9) - 1rem);
 }
 
 .btn__search{
